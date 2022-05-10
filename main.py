@@ -9,7 +9,7 @@ from torchsummary import summary
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-def u0(t, x, c=1, k=2, sd=0.3):
+def u0(t, x, c=1, k=2, sd=0.5):
     """
     Initial wave form.
 
@@ -109,7 +109,7 @@ if __name__ == '__main__':
     cbar.set_label('u(t,x)')
     cbar.mappable.set_clim(vmin, vmax)
     # plot u(t=const, x) cross-sections
-    t_cross_sections = [0.5, 1, 2]
+    t_cross_sections = [0.2, 0.4, 0.8]
     for i, t_cs in enumerate(t_cross_sections):
         plt.subplot(gs[1, i])
         tx = np.stack([np.full(t_flat.shape, t_cs), x_flat], axis=-1)
